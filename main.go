@@ -1,9 +1,10 @@
 package main
 
 import (
-	"fmt"
+	"shop_ping/messenger"
 )
 
 func main() {
-	fmt.Println("hello world")
+	messenger.SendMessage();
 }
+
