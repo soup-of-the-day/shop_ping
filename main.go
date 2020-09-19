@@ -5,6 +5,6 @@ import (
 )
 
 func main() {
-	messenger.SendMessage();
+	messenger.SendAlert()
 }
 

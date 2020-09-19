@@ -1,5 +1,6 @@
-build_receiver:
+build:
 	go build -o shop_ping .
 
-clean: 
+clean:
 	rm shop_ping
+
