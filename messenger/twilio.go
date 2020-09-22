@@ -30,13 +30,13 @@ func CreateTwilioMessenger() *TwilioMessenger {
 }
 
 // Uses Twilio API to send a text to my phone
-func (m *TwilioMessenger) SendAlert() error {
+func (m *TwilioMessenger) SendAlert(msg string) error {
 	apiUrl := fmt.Sprintf("https://api.twilio.com/2010-04-01/Accounts/%s/Messages.json", m.AccountSid)
 
 	msgData := url.Values{}
 	msgData.Set("To",m.ToNumber)
 	msgData.Set("From",m.FromNumber)
-	msgData.Set("Body","Yo, your item is suddenly available!")
+	msgData.Set("Body",msg)
 	msgDataReader := *strings.NewReader(msgData.Encode())
 
 	client := &http.Client{}
@@ -58,5 +58,6 @@ func (m *TwilioMessenger) SendAlert() error {
 		responseData, _ := ioutil.ReadAll(resp.Body)
 		return fmt.Errorf(string(responseData))
 	}
+	log.Println("Message sent!")
 	return nil
 }
